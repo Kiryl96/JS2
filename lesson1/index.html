@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            margin-top: 20px
+        }
+
+        main {
+            padding-top: 20px;
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        .clearfix:after {
+            content: " ";
+            display: table;
+            clear: both;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <button class="cart-button" type="button" style="display: block; margin: 0 auto; width: 180px;height: 50px;border: 1px solid red;">Корзина</button>
+    </header>
+    <main class="clearfix">
+        <div class="goods-list"></div>
+    </main>
+    <script>
+        const goods = [{
+                title: 'Shirt',
+                price: 150
+            },
+            {
+                title: 'Socks',
+                price: 50
+            },
+            {
+                title: 'Jacket',
+                price: 350
+            },
+            {
+                title: 'Shoes',
+                price: 250
+            },
+        ];
+        const renderGoodsItem = (title = "Boots", price = 100) => `<div class="goods-item" style="display:inline-block;
+     text-align:center;background:yellow;margin-left:40px; width: 100px;height: 100px;border: 1px solid black;"><h3>${title}</h3><p>${price}</p></div>`;
+
+        const renderGoodsList = list => {
+            let goodsList = list.map(item => renderGoodsItem(item.title ,item.price));
+            document.querySelector('.goods-list').innerHTML = goodsList;
+        }
+
+        renderGoodsList(goods);
+
+    </script>
+</body>
+
+</html>
